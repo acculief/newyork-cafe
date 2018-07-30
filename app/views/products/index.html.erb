@@ -1,29 +1,27 @@
 <style>
-table {
-  text-align: center;
-}
-th {
-  text-align: center;
-}
+
 </style>
-<%- model_class = Product -%>
+<div class="container"></div>
 <div class="page-header">
   <h1 class='text-center'>音楽ランキング</h1>
 </div>
-<table class="table table-striped container">
-  <thead text-center>
-    <tr>
-      <th>ランキング</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @products.each do |product| %>
+<div class="row">
+  <table class="col-lg-12">
+    <thead>
       <tr>
-        <td><%= link_to product.id, product_path(product) %><%= product.title %></td>
+
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td class='col-lg-5'><%=product.priority%></td>
+          <td class='col-lg-6 pull-left'><%= product.title %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_product_path,
