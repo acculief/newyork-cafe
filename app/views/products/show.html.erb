@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @product.title %>
+</p>
+
+<p>
+  <strong>Favorite count:</strong>
+  <%= @product.favorite_count %>
+</p>
+
+<p>
+  <strong>View count:</strong>
+  <%= @product.view_count %>
+</p>
+
+<p>
+  <strong>Like count:</strong>
+  <%= @product.like_count %>
+</p>
+
+<p>
+  <strong>Dislike count:</strong>
+  <%= @product.dislike_count %>
+</p>
+
+<p>
+  <strong>Comment count:</strong>
+  <%= @product.comment_count %>
+</p>
+
+<p>
+  <strong>Products url:</strong>
+  <%= @product.products_url %>
+</p>
+
+<p>
+  <strong>Youtuber:</strong>
+  <%= @product.youtuber_id %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
