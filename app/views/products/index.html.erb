@@ -1,37 +1,25 @@
+<style>
+table {
+  text-align: center;
+}
+th {
+  text-align: center;
+}
+</style>
 <%- model_class = Product -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1 class='text-center'>音楽ランキング</h1>
 </div>
-<table class="table table-striped">
-  <thead>
+<table class="table table-striped container">
+  <thead text-center>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:title) %></th>
-      <th><%= model_class.human_attribute_name(:products_url) %></th>
-      <th><%= model_class.human_attribute_name(:youtuber_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
-      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+      <th>ランキング</th>
     </tr>
   </thead>
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= link_to product.id, product_path(product) %></td>
-        <td><%= product.title %></td>
-        <td><%= product.products_url %></td>
-        <td><%= product.youtuber_id %></td>
-        <td><%=l product.created_at %></td>
-        <td>
-          <%= link_to t('.show', :default => t("helpers.links.show")),
-                      product_path(product), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_product_path(product), :class => 'btn btn-default btn-xs' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      product_path(product),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-xs btn-danger' %>
-        </td>
+        <td><%= link_to product.id, product_path(product) %><%= product.title %></td>
       </tr>
     <% end %>
   </tbody>

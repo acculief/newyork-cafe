@@ -10,12 +10,15 @@
   </head>
 
   <body>
+    <div id="wrapper">
+    <%= render 'layouts/header' %>
     <% flash.each do |name, msg| %>
-  <div class="alert alert-<%= name == "notice" ? "success" : "error" %>">
-    <a class="close" data-dismiss="alert">×</a> <!-- アラートダイアログに×ボタンをつける -->
-    <%= msg %>
-  </div>
-<% end %>
+      <div class="alert alert-<%= name == "notice" ? "success" : "error" %>">
+        <a class="close" data-dismiss="alert">×</a> <!-- アラートダイアログに×ボタンをつける -->
+        <%= msg %>
+      </div>
+    <% end %>
     <%= yield %>
+    </div>
   </body>
 </html>
