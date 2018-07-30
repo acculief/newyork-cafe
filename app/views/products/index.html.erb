@@ -1,22 +1,93 @@
 <style>
+.main-content{
+  /* padding-top: 100px;
+  padding-bottom: 100px;
+  padding-left: 100px;
+  padding-right: 100px; */
+  margin-bottom: 20px;
+}
+
+.o-3column .col-md-3  {
+  /* background-color: #C0C0C0;
+  border: solid 1px #000000; */
+  /* border-collapse: collapse; */
+
+ }
+
+.thumbnail{
+  background-color: #C0C0C0;
+  /* padding-bottom: 100px; */
+
+ }
+
+ .thumbnail .Item-Data{
+  text-align: center;
+ }
 
 </style>
 <div class="container"></div>
 <div class="page-header">
   <h1 class='text-center'>音楽ランキング</h1>
 </div>
-<div class="row">
+<div class="row o-3column">
   <table class="col-lg-12">
     <thead>
       <tr>
+        <th class='col-md-1 text-center'></th>
+        <th class='col-md-3 text-center '>ボーカロイド</th>
+        <th class='col-md-3 text-center'>邦楽</th>
+        <th class='col-md-3 text-center'>EDM</th>
+        <th class='col-md-1 text-center'></th>
 
       </tr>
     </thead>
     <tbody>
       <% @products.each do |product| %>
         <tr>
-          <td class='col-lg-5'><%=product.priority%></td>
-          <td class='col-lg-6 pull-left'><%= product.title %></td>
+          <td class='col-md-1 text-center'><%=product.priority%></td>
+          <td class='col-md-3 main-content'>
+            <div class="thumbnail">
+              <div class="video">
+                <iframe
+                  src="https://www.youtube.com/embed/F02fIei8gZU"
+                  frameborder="0" allowfullscreen>
+                </iframe>
+                <p><%= product.title %></p>
+                <div class="Item-Data">
+                  <p>再生回数 コメント数 お気に入り数</p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="col-md-3 main-content">
+            <div class="thumbnail">
+              <div class="video">
+                <!-- URLが打ち込まれたらwatch~=を削除してembedと繋げる正規表現を書く -->
+                <iframe
+                  src="https://www.youtube.com/embed/F02fIei8gZU"
+                  frameborder="0" allowfullscreen>
+                </iframe>
+                <p><%= product.title %></p>
+                <div class="Item-Data">
+                  <p>再生回数 コメント数 お気に入り数</p>
+                </div>
+              </div>
+          </td>
+          <td class="col-md-3 main-content">
+            <div class="thumbnail">
+              <div class="video">
+                <iframe
+                  src="https://www.youtube.com/embed/58Hj4BsMIQs"
+                  frameborder="0" allowfullscreen>
+                </iframe>
+                <p><%= product.title %></p>
+                <div class="Item-Data">
+                  <p>再生回数 コメント数 お気に入り数</p>
+                </div>
+              </div>
+          </td>
+          <td class='col-md-1 text-center'></td>
+
         </tr>
       <% end %>
     </tbody>
