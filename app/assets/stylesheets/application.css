@@ -18,7 +18,7 @@
  /* navbar 全体の背景色とボーダーカラー */
  .navbar-default {
  background-color: #65baad;
- border-color: #3e6962;
+ /* border-color: #3e6962; */
  }
  /* navbar テキストカラー */
  .navbar-default .navbar-nav > li > a {
@@ -109,10 +109,30 @@
  }
  /* navbar Brandのカラー */
  .navbar-default .navbar-brand {
- color: #b71c1c;
+ color: #ffffff;;
+ font-family: 'Oswald', sans-serif;
+ font-size: 1.1em;
  }
  .navbar-default .navbar-brand:focus,
  .navbar-default .navbar-brand:hover {
- color: #b71c1c;
+ color: #ffffff;;
  background-color: transparent;
  }
+ .navbar-toggle {
+    z-index: 2;
+}
+
+.navbar-brand-center {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    text-align:center;
+    margin: auto;
+}
+
+@media (min-width: 768px) {
+    .navbar-brand-center {
+        margin-left: 0 !important;
+    }
+}
