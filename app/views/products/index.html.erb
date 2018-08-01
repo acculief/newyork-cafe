@@ -17,10 +17,13 @@
   background:rgba(235,235,235,1.00);
   margin-bottom: 30px;
   border-bottom: 1px solid #eeeeee;
+  margin-top: 30px;
+  padding-bottom: 30px;
  }
 
  .thumbnail .Item-Data{
-  text-align: center;
+  position: absolute;
+  top:100%;
  }
 
  .video{
@@ -49,7 +52,12 @@
 .box p{
   font-size: calc(10px + 0.25vw)
 }
-
+.video p{
+  font-size: 0.5vw
+}
+.Item{
+  height: 50px;
+}
 </style>
 <div class="container"></div>
 <div class="page-header">
@@ -65,72 +73,24 @@
         <th class='col-md-1 text-center'></th>
         <th class='col-md-3 text-center '>ボーカロイド</th>
         <th class='col-md-3 text-center'>邦楽</th>
-        <th class='col-md-3 text-center'>EDM</th>
+        <th class='col-md-3 text-center'>洋楽</th>
         <th class='col-md-1 text-center'></th>
 
       </tr>
     </thead>
     <tbody>
-      <% @products.each do |product| %>
         <tr>
-          <td class='col-md-1 text-center'><%=product.priority%></td>
+          <td class='col-md-1 text-center'></td>
           <td class='col-md-3 main-content'>
-            <div class="thumbnail">
-              <div class="video">
-                <% iframe = content_tag(
-                    :iframe,
-                    '', # empty body
-                    src: "#{product.products_url.gsub("https://www.youtube.com/watch?v=", "https://www.youtube.com/embed/")}",
-                    frameborder: 0,
-                    allowfullscreen: true
-                ) %>
-                <%= content_tag(:div, iframe, class: 'youtube-container') %>
-                <p><%= product.title %></p>
-                <div class="Item-Data">
-                  <p>再生回数 コメント数 お気に入り数</p>
-                </div>
-              </div>
-            </div>
+            <%= render 'vocaloid', product: @products_vocaloid %>
           </td>
-          <td class="col-md-3 main-content">
-            <div class="thumbnail">
-              <div class="video">
-                <!-- URLが打ち込まれたらwatch~=を削除してembedと繋げる正規表現を書く -->
-                <% iframe = content_tag(
-                    :iframe,
-                    '', # empty body
-                    src: "#{product.products_url.gsub("https://www.youtube.com/watch?v=", "https://www.youtube.com/embed/")}",
-                    frameborder: 0,
-                    allowfullscreen: true
-                ) %>
-                <%= content_tag(:div, iframe, class: 'youtube-container') %>
-                <p><%= product.title %></p>
-                <div class="Item-Data">
-                  <p>再生回数 コメント数 お気に入り数</p>
-                </div>
-              </div>
-            </div>
+          <td class='col-md-3 main-content'>
+            <%= render 'japan', product: @products_japan %>
           </td>
-          <td class="col-md-3 main-content">
-            <div class="thumbnail">
-              <div class="video">
-                <% iframe = content_tag(
-                    :iframe,
-                    '', # empty body
-                    src: "#{product.products_url.gsub("https://www.youtube.com/watch?v=", "https://www.youtube.com/embed/")}",
-                    frameborder: 0,
-                    allowfullscreen: true
-                ) %>
-                <%= content_tag(:div, iframe, class: 'youtube-container') %>
-                <p><%= product.title %></p>
-                <div class="Item-Data">
-                  <p>再生回数 コメント数 お気に入り数</p>
-                </div>
-              </div>
+          <td class='col-md-3 main-content'>
+            <%= render 'yougaku', product: @products_western %>
           </td>
           <td class='col-md-1 text-center'></td>
-        </tr>
-      <% end %>
     </tbody>
   </table>
   <div class="text-center page"><%= paginate @products %></div>

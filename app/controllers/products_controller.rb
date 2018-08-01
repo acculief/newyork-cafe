@@ -5,6 +5,9 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all.page(params[:page]).per(5)
+    @products_japan = Product.tagged_with("邦楽")
+    @products_vocaloid = Product.tagged_with("ボーカロイド")
+    @products_western = Product.tagged_with("洋楽")
   end
 
   # GET /products/1
@@ -69,6 +72,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :favorite_count, :view_count, :like_count, :dislike_count, :comment_count, :products_url, :youtuber_id, :priority)
+      params.require(:product).permit(:title, :favorite_count, :view_count, :like_count, :dislike_count, :comment_count, :products_url, :youtuber_id, :priority, :tag_list)
     end
 end
