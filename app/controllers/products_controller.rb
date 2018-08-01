@@ -5,9 +5,9 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all.page(params[:page]).per(5)
-    @products_japan = Product.tagged_with("邦楽")
-    @products_vocaloid = Product.tagged_with("ボーカロイド")
-    @products_western = Product.tagged_with("洋楽")
+    @products_japan = Product.tagged_with("邦楽").page(params[:page]).per(5)
+    @products_vocaloid = Product.tagged_with("ボーカロイド").page(params[:page]).per(5)
+    @products_western = Product.tagged_with("洋楽").page(params[:page]).per(5)
   end
 
   # GET /products/1
